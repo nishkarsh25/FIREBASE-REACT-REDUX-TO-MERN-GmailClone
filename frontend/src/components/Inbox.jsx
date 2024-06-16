@@ -7,7 +7,20 @@ import { GoTag } from "react-icons/go";
 import Messages from './Messages';
 import { useSelector } from 'react-redux';
 
-
+const mailType = [
+    {
+        icon:<MdInbox size={"20px"}/>,
+        text:"Primary",
+    },
+    {
+        icon:<GoTag size={"20px"}/>,
+        text:"Promotions",
+    },
+    {
+        icon:<FaUserFriends size={"20px"}/>,
+        text:"Social",
+    },
+];
 
 
 
