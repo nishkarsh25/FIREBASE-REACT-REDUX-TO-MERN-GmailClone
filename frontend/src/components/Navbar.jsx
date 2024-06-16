@@ -30,7 +30,9 @@ const Navbar = () => {
       console.log(error)
     }
   }
-  
+  useEffect(() => {
+    dispatch(setSearchText(search));
+  }, [search]);
 
 
   
