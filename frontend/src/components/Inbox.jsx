@@ -64,7 +64,7 @@ const Inbox = () => {
                         )
                     }
                 </div>
-                
+                <Messages />
             </div>
         </div>
     )
