@@ -30,7 +30,8 @@ const sidebarItems = [
 ]
 
 const Sidebar = () => {
-    
+    const [selected, setSelected] = useState(0);
+    const dispatch = useDispatch();
     
 }
 
