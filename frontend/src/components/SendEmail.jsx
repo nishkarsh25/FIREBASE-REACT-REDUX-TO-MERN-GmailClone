@@ -44,6 +44,21 @@ const SendEmail = () => {
         });
     }
 
-    
+    return (
+        <div className={`${open ? 'block' : 'hidden'} bg-white max-w-6xl shadow-xl shadow-slate-600 rounded-t-md`}>
+            <div className='flex px-3 py-2 bg-[#F2F6FC] items-center justify-between rounded-t-md'>
+                <h1>New Message</h1>
+                <div onClick={() => dispatch(setOpen(false))} className='p-2 rounded-full hover:bg-gray-200 cursor-pointer'>
+                    <RxCross2 />
+                </div>
+            </div>
+            <form onSubmit={submitHandler} className='flex flex-col p-3 gap-2'>
+                <input onChange={changeEventHandler} name="recipients" value={formData.recipients} type="text" placeholder='Recipients' className='outline-none py-1' />
+                <input onChange={changeEventHandler} name="subject" value={formData.subject} type="text" placeholder='Subject' className='outline-none py-1' />
+                <textarea onChange={changeEventHandler} name="message" value={formData.message} id="" cols="30" rows="10" className='outline-none py-1'></textarea>
+                <button type='submit' className='bg-[#0B57D0] rounded-full w-fit px-4 py-1 text-white font-medium'>Send</button>
+            </form>
+        </div>
+    )
 }
 
