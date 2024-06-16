@@ -17,9 +17,7 @@ const persistConfig = {
     storage,
   }
 
-  const rootReducer = combineReducers({
-    app:appSlice
- })
+  
 
 
 
