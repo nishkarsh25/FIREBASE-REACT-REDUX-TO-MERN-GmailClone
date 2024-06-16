@@ -15,6 +15,11 @@ const Body = () => {
         navigate("/login")
       }
   })
-  
+  return (
+    <div className='flex'>
+      <Sidebar />
+      <Outlet />
+    </div>
+  )
 }
 
