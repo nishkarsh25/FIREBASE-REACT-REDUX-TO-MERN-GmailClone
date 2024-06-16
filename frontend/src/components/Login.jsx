@@ -6,7 +6,10 @@ import { useDispatch } from 'react-redux';
 import { setAuthUser } from '../redux/appSlice';
 
 const Login = () => {
-  
+  const [input, setInput] = useState({
+    email: '',
+    password: '',
+  });
   
 
   
