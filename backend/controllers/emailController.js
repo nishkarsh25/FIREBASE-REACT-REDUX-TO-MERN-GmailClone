@@ -25,6 +25,23 @@ export const createEmail = async (req, res) => {
   }
 };
 
+export const deleteEmail = async (req, res) => {
+  try {
+    const emailId = req.params.id;
 
+    if (!emailId)
+      return res.status(400).json({ message: "Email id is required" });
+
+    const email = await Email.findOneAndDelete({_id: emailId});
+
+    if (!email) return res.status(404).json({ message: "Email is not found" });
+
+    return res.status(201).json({
+      message: "Email Deleted Successfully",
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 
