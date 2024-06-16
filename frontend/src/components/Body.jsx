@@ -9,7 +9,12 @@ const Body = () => {
   const {authUser} = useSelector(store=>store.app);
   const navigate = useNavigate()
 
-  
+  useEffect(()=>{
+    if(!authUser)
+      {
+        navigate("/login")
+      }
+  })
   
 }
 
