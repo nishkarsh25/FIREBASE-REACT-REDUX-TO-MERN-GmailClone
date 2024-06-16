@@ -23,7 +23,8 @@ const mailType = [
 ];
 
 const Inbox = () => {
-    
+    const [mailTypeSelected, setMailTypeSelected] = useState(0);
+    const {emails} = useSelector(store=>store.app);
     
     
 }
