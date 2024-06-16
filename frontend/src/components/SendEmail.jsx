@@ -8,7 +8,13 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 
 const SendEmail = () => {
-    
+    const [formData, setFormData] = useState({
+        recipients: "",
+        subject: "",
+        message: ""
+    })
+    const { open } = useSelector(store => store.app);
+    const dispatch = useDispatch();
 
     
 
