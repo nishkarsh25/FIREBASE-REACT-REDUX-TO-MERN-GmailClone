@@ -16,7 +16,9 @@ const SendEmail = () => {
     const { open } = useSelector(store => store.app);
     const dispatch = useDispatch();
 
-    
+    const changeEventHandler = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
 
     
 
