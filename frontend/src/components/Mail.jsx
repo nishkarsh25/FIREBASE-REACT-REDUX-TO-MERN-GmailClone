@@ -20,7 +20,9 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 
 const Mail = () => {
-  
+  const params = useParams();
+  const navigate = useNavigate();
+  const { selectedMail } = useSelector(store => store.app);
 
   
 
