@@ -15,7 +15,16 @@ const Message = ({ email }) => {
     }
 
 
-    
+    // Format the date to IST
+    const options = {
+        timeZone: 'Asia/Kolkata',
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    };
+    const formattedDate = new Date(email?.createdAt).toLocaleString('en-IN', options);
 
     
 }
