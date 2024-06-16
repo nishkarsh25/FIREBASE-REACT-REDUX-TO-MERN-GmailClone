@@ -190,67 +190,103 @@ Before running the project, ensure you have the following installed:
 
 ## Usage
 
-1. **Sign In**
-   - Sign in using your Google account by clicking on the "Login" button.
-   
-2. **View Inbox**
-   - Once logged in, you will be directed to your inbox where you can view a list of emails.
+### Frontend Usage
 
-3. **Compose and Send Emails**
-   - Click on the "Compose" button in the sidebar to create a new email.
-   - Enter recipients, subject, and message content, then click "Send".
+#### Authentication Flow
 
-4. **View Email Details**
-   - Click on any email in the inbox list to view its details.
-   - Details include sender, subject, message content, and timestamp.
+1. **Sign Up**
+   - Navigate to `/signup` route.
+   - Fill out the registration form with `email` and `password`.
+   - Submit the form to create a new account.
 
-5. **Perform Actions on Emails**
-   - From the email detail view, you can perform various actions such as:
-     - **Archive**: Click on the archive icon to archive the email.
-     - **Delete**: Click on the delete icon to delete the email.
-     - **Mark as Unread**: Toggle the read status of the email.
-     - **Move to Different Folders**: Use the move option to move the email to different folders.
+2. **Log In**
+   - Navigate to `/login` route.
+   - Enter your registered `email` and `password`.
+   - Upon successful login, you will receive a JWT token.
 
-6. **Responsive Design**
-   - The application is responsive and designed to work seamlessly across desktop and mobile devices.
+3. **Log Out**
+   - Click on the "Log Out" button to clear the JWT token and log out the user.
 
-7. **Navigation**
-   - Use the sidebar to navigate between different email categories (Inbox, Starred, Snoozed, Sent, Drafts, etc.).
-   - Use the navigation buttons at the top to move between pages or navigate back to the main inbox view.
+#### Email Management
 
-8. **Logout**
-   - To log out, click on your profile picture in the top-right corner, then click "Logout".
+1. **View Inbox**
+   - Upon successful login, you will be directed to view your inbox (`/` route).
+   - All received emails will be displayed.
+
+2. **Compose Email**
+   - Click on the "Compose" button to open the email composition form.
+   - Enter recipient (`to`), `subject`, and `message`.
+   - Click "Send" to send the email.
+
+3. **View Email Details**
+   - Click on any email in the inbox to view its details.
+   - The email's `subject`, `to`, `message`, and timestamp will be displayed.
+
+4. **Delete Email**
+   - While viewing an email, click on the "Delete" button to delete the email.
+
+### Notes
+
+- Ensure MongoDB is running and accessible for the backend to store and retrieve data.
+- JWT tokens are used for authentication and authorization purposes.
+- Adjust frontend routes (`RouterProvider`) and backend routes (`express.Router`) as needed based on your project structure and requirements.
 
 Enjoy managing your emails with the Gmail Clone application!
 
 
-## API Endpoints
+## API Endpoints and Usage
 
-The backend server exposes the following API endpoints:
+### Backend API Endpoints
 
-- `POST /register`: Register a new user.
-- `POST /login`: Log in an existing user.
+#### Authentication
 
-1. **Product Routes (`/routes/productRouter.js`):**
-   - `GET /products`: Retrieves all products.
-   - `POST /products`: Creates a new product.
-   - `DELETE /products/:id`: Deletes a product by ID.
-   - `PUT /products/:id`: Updates a product by ID.
+- **POST `/api/v1/auth/signup`**
+  - **Description**: Register a new user.
+  - **Body**: `{ email, password }`
+  - **Response**: Returns a JWT token upon successful registration.
 
-2. **Category Routes (`/routes/categoryRouter.js`):**
-   - `GET /category`: Retrieves all categories.
-   - `POST /category`: Creates a new category.
-   - `DELETE /category/:id`: Deletes a category by ID.
-   - `PUT /category/:id`: Updates a category by ID.
+- **POST `/api/v1/auth/login`**
+  - **Description**: Log in an existing user.
+  - **Body**: `{ email, password }`
+  - **Response**: Returns a JWT token upon successful login.
 
-3. **User Routes (`/routes/userRouter.js`):**
-   - `POST /register`: Registers a new user.
-   - `POST /login`: Logs in an existing user.
-   - `GET /logout`: Logs out the current user.
-   - `GET /refresh_token`: Refreshes the authentication token.
-   - `GET /infor`: Retrieves user information (requires authentication).
+- **GET `/api/v1/auth/logout`**
+  - **Description**: Log out the current user.
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Clears the JWT token from the client.
 
-These routes define the endpoints for handling product CRUD operations, category CRUD operations, and user authentication operations in the backend server. Each route corresponds to a specific action or resource in the application.
+#### Email Management
+
+- **GET `/api/v1/email/getallemails`**
+  - **Description**: Retrieve all emails.
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Returns an array of email objects.
+
+- **POST `/api/v1/email/create`**
+  - **Description**: Create a new email.
+  - **Body**: `{ to, subject, message }`
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Returns the created email object.
+
+- **GET `/api/v1/email/:id`**
+  - **Description**: Retrieve a specific email by ID.
+  - **Params**: `id` (Email ID)
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Returns the email object with the specified ID.
+
+- **DELETE `/api/v1/email/:id`**
+  - **Description**: Delete a specific email by ID.
+  - **Params**: `id` (Email ID)
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Returns a success message upon deletion.
+
+#### User Profile
+
+- **GET `/api/v1/user/profile`**
+  - **Description**: Retrieve user profile information.
+  - **Authorization**: Bearer Token (JWT)
+  - **Response**: Returns user profile details.
+
 
 ## React + Vite
 
