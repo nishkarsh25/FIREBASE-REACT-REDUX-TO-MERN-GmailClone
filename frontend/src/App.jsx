@@ -11,7 +11,30 @@ import { auth } from './firebase';
 import { setAuthUser } from './redux/appSlice';
 import Signup from './components/Signup';
 
-
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Body />,
+    children: [
+      {
+        path: '/',
+        element: <Inbox />
+      },
+      {
+        path: '/mail/:id',
+        element: <Mail />
+      },
+    ]
+  },
+  {
+    path: '/login',
+    element: <Login />
+  },
+  {
+    path: '/signup',
+    element: <Signup />
+  }
+]);
 
 
 
