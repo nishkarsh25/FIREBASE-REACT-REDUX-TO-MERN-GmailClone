@@ -22,5 +22,9 @@ const mailType = [
     },
 ];
 
-
+const Inbox = () => {
+    
+    
+    
+}
 
