@@ -26,7 +26,16 @@ const Messages = () => {
     fetchEmails();
   }, [dispatch,refresh]);
 
-  
+  useEffect(() => {
+      const filteredEmail = emails.filter((email) => {
+        return (
+          email.subject.toLowerCase().includes(searchText.toLowerCase()) ||
+          email.to.toLowerCase().includes(searchText.toLowerCase()) ||
+          email.message.toLowerCase().includes(searchText.toLowerCase())
+        );
+      });
+      setFilterEmail(filteredEmail);
+  }, [searchText, emails]);
 
   
 };
