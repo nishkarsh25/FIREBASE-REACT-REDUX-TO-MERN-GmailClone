@@ -7,7 +7,7 @@ import emailRoute from "./routes/emailRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
-
+dotenv.config({});
 
  
 
