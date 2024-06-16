@@ -49,6 +49,14 @@ const Mail = () => {
   const formattedDate = new Date(selectedMail?.createdAt).toLocaleString('en-IN', options);
 
 
-  
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className='flex-1 bg-white rounded-xl mx-5'>
+      
+    </motion.div>
+  )
 }
 
