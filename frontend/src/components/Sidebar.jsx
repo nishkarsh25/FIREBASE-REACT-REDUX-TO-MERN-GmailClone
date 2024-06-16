@@ -32,6 +32,32 @@ const sidebarItems = [
 const Sidebar = () => {
     const [selected, setSelected] = useState(0);
     const dispatch = useDispatch();
-    
+    return (
+        <div className='w-[15%]'>
+            <div className='p-3'>
+                <button onClick={() => dispatch(setOpen(true))} className='flex items-center gap-2 bg-[#C2E7FF] p-4 rounded-2xl hover:shadow-md'>
+                    <LuPencil size={"24px"} />
+                    Compose
+                </button>
+            </div>
+            <div className='text-gray-500'>
+                {
+                    sidebarItems.map((item, idx) => {
+                        return (
+                            <div onClick={() => setSelected(idx)} key={idx} className={`${selected === idx ? 'bg-[#C2E7FF] text-black' : "hover:bg-gray-200 hover:text-black"} flex pl-6 py-1 rounded-r-full items-center gap-4 my-2  hover:cursor-pointer`}>
+                                {item.icon}
+                                <p>{item.text}</p>
+                            </div>
+                        )
+                    })
+                }
+                <div className='flex items-center pl-6 gap-4 cursor-pointer hover:bg-gray-200 rounded-r-full py-1'>
+                    <MdOutlineKeyboardArrowDown size={"20px"} />
+                    <span>More</span>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    )
 }
 
