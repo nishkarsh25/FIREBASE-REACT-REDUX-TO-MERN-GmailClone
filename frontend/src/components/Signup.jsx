@@ -4,7 +4,12 @@ import axios from 'axios';
 import toast from "react-hot-toast";
 
 const Signup = () => {
-  
+  const [input, setInput] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+  });
+
   
 
   
