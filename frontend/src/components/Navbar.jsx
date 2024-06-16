@@ -15,7 +15,10 @@ import toast from 'react-hot-toast';
 
 
 const Navbar = () => {
-  
+  const [search, setSearch] = useState("");
+  const [toggle, setToggle] = useState(false);
+  const dispatch = useDispatch();
+  const { authUser } = useSelector(store => store.app);
 
   
   
