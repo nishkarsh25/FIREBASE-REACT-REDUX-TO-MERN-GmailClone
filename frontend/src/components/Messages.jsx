@@ -37,7 +37,15 @@ const Messages = () => {
       setFilterEmail(filteredEmail);
   }, [searchText, emails]);
 
-  
+  return (
+    <div>
+      {filterEmail.length > 0 ? (
+        filterEmail.map((email) => <Message key={email.id} email={email} />)
+      ) : (
+        <p>No emails found</p>
+      )}
+    </div>
+  );
 };
 
 
