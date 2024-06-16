@@ -5,5 +5,10 @@ import Navbar from './Navbar'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
+const Body = () => {
+  
 
+  
+  
+}
 
