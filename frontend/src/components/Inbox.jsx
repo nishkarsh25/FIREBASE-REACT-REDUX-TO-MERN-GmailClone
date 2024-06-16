@@ -47,7 +47,23 @@ const Inbox = () => {
                     <button disabled={false} className='hover:rounded-full hover:bg-gray-100'><MdKeyboardArrowRight size={"24px"} /></button>
                 </div>
             </div>
-            
+            <div className='h-[90vh] overflow-y-auto'>
+                <div className='flex items-center gap-1'>
+                    {
+                        mailType.map((item, index) =>
+                            <button
+                                key={index}
+                                className={`flex items-center gap-5 p-4 ${mailTypeSelected === index ? 'border-b-4 border-b-blue-600 text-blue-600' : 'border-b-4 border-b-transparent'} w-52 hover:bg-gray-100`}
+                                onClick={() => {
+                                    setMailTypeSelected(index)
+                                }}
+                            >
+                                {item.icon}
+                                <span>{item.text}</span>
+                            </button>
+                        )
+                    }
+                </div>
                 
             </div>
         </div>
