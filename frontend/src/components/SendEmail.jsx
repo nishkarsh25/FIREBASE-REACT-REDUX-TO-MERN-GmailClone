@@ -20,7 +20,29 @@ const SendEmail = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    
+    const submitHandler = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await axios.post("http://localhost:8080/api/v1/email/create",{
+                to: formData.recipients,
+                subject: formData.subject,
+                message: formData.message},{
+                    headers: {
+                      'Content-Type': 'application/json',
+                    },
+                    withCredentials: true,
+                  })
+        } catch (error) {
+            console.log(error)
+            toast.error(error.response.data.message)
+        }
+        dispatch(setOpen(false));
+        setFormData({
+            recipients: "",
+            subject: "",
+            message: ""
+        });
+    }
 
     
 }
