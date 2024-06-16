@@ -20,7 +20,16 @@ const Navbar = () => {
   const dispatch = useDispatch();
   const { authUser } = useSelector(store => store.app);
 
-  
+  const signOutHandler = async() => {
+    try {
+      const res = await axios.get('http://localhost:8080/api/v1/user/logout')
+      console.log(res)
+      toast.success(res.data.message);
+      dispatch(setAuthUser(null));
+    } catch (error) {
+      console.log(error)
+    }
+  }
   
 
 
