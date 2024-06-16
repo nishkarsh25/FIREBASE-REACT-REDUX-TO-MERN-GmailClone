@@ -53,3 +53,4 @@ const Message = ({ email }) => {
     )
 }
 
+export default Message
