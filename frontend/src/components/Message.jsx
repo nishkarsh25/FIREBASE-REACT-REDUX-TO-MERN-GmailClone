@@ -7,7 +7,12 @@ import { setSelectedMail } from '../redux/appSlice';
 import { motion } from 'framer-motion';
 
 const Message = ({ email }) => {
-    
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const openMail = () => {
+        dispatch(setSelectedMail(email));
+        navigate(`/mail/${email._id}`);
+    }
 
 
     
