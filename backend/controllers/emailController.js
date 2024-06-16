@@ -44,6 +44,7 @@ export const deleteEmail = async (req, res) => {
   }
 };
 
+
 export const getAllEmailById = async (req, res) => {
   try {
     const userId = req.id;
