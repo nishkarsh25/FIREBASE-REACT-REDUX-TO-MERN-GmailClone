@@ -9,7 +9,22 @@ const Messages = () => {
   const [filterEmail, setFilterEmail] = useState([]);
   const dispatch = useDispatch();
 
-  
+  useEffect(() => {
+    const fetchEmails = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/api/v1/email/getallemails", {
+          withCredentials: true,
+        });
+        const sortedEmails = response.data.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+        dispatch(setEmails(sortedEmails));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchEmails();
+  }, [dispatch,refresh]);
 
   
 
