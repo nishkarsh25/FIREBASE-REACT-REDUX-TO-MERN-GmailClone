@@ -40,7 +40,21 @@ function App() {
   const { authUser } = useSelector(store => store.app);
   
 
-  
+  return (
+    <div className='bg-[#F6F8FC] w-screen h-screen overflow-hidden'>
+      {!authUser ? (
+        <RouterProvider router={router} />
+      ) : (
+        <>
+          <Navbar />
+          <RouterProvider router={router} />
+          <div className='absolute w-[30%] bottom-0 right-20 z-10'>
+            <SendEmail />
+          </div>
+        </>
+      )}
+    </div>
+  );
 }
 
 
