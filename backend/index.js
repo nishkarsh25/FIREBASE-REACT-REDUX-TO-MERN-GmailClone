@@ -29,5 +29,8 @@ app.use("/api/v1/user",userRoute);
 app.use("/api/v1/email",emailRoute);
  
 
-
+app.listen(PORT, ()=>{
+    connectDB();
+    console.log(`Server listen at prot ${PORT}`);
+});
 
