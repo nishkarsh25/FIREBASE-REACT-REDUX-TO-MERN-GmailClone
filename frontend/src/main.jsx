@@ -8,5 +8,5 @@ import { Toaster } from "react-hot-toast";
 import { PersistGate } from 'redux-persist/integration/react'
 import { persistStore } from 'redux-persist';
 
-
+let persistor = persistStore(store);
 
