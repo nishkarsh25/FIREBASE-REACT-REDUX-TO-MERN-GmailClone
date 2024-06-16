@@ -38,4 +38,4 @@ export const {
     setAuthUser
 } = appSlice.actions;
 
-
+export default appSlice.reducer;
