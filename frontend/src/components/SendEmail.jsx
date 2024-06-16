@@ -62,3 +62,4 @@ const SendEmail = () => {
     )
 }
 
+export default SendEmail
