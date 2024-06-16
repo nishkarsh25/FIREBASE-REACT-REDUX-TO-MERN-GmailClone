@@ -10,7 +10,24 @@ const appSlice = createSlice({
         authUser: null,
         refresh: false
     },
-    
+    reducers: {
+        setOpen: (state, action) => {
+            state.open = action.payload;
+            state.refresh= !state.refresh
+        },
+        setSelectedMail: (state, action) => {
+            state.selectedMail = action.payload;
+        },
+        setSearchText: (state, action) => {
+            state.searchText = action.payload;
+        },
+        setEmails: (state, action) => {
+             state.emails = action.payload;
+        },
+        setAuthUser: (state, action) => {
+            state.authUser = action.payload;
+        },
+    }
 });
 
 
