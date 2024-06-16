@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 
 const Body = () => {
-  
+  const {authUser} = useSelector(store=>store.app);
+  const navigate = useNavigate()
 
   
   
