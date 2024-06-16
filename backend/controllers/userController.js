@@ -33,7 +33,41 @@ export const register = async (req, res) => {
         console.log(error);
     }
 };
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        if (!email || !password) {
+            return res.status(400).json({ message: "All fields are required" });
+        };
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({
+                message: "Incorrect username or password",
+                success: false
+            })
+        };
+        const isPasswordMatch = await bcrypt.compare(password, user.password);
+        if (!isPasswordMatch) {
+            return res.status(400).json({
+                message: "Incorrect username or password",
+                success: false
+            })
+        };
+        const tokenData = {
+            userId: user._id
+        };
 
+        const token = await jwt.sign(tokenData, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
+
+        return res.status(200).cookie("token", token, { maxAge: 1 * 24 * 60 * 60 * 1000, httpOnly: true, sameSite: 'strict' }).json({
+            message:`${user.fullname} logged in successfully`,
+            user
+        });
+
+    } catch (error) {
+        console.log(error);
+    }
+}
 
 
 
