@@ -24,7 +24,17 @@ const Mail = () => {
   const navigate = useNavigate();
   const { selectedMail } = useSelector(store => store.app);
 
-  
+  const deleteMailById = async (id) => {
+    try {
+      console.log(params.id)
+      console.log(id)
+      const res = await axios.delete(`http://localhost:8080/api/v1/email/${params.id}`,{withCredentials:true})
+      toast.success(res.data.message)
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
 
   
