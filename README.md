@@ -44,7 +44,7 @@ This project is an email client application built with React, designed to provid
 
 ## Live Demo
 
-You can try out the live demo of the app [here](https://react-redux-firebase-gmailclone.onrender.com).
+You can try out the live demo of the app [here](https://firebase-react-redux-to-mern-gmailclone-2.onrender.com).
 
 ## Folder Structure
 
