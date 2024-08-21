@@ -27,7 +27,7 @@ const Messages = () => {
   }, [dispatch,refresh]);
 
   useEffect(() => {
-      const filteredEmail = emails.filter((email) => {
+      const filteredEmail = emails?.filter((email) => {
         return (
           email.subject.toLowerCase().includes(searchText.toLowerCase()) ||
           email.to.toLowerCase().includes(searchText.toLowerCase()) ||

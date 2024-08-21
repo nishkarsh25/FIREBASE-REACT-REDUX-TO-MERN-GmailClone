@@ -6,6 +6,9 @@ import userRoute from "./routes/userRoute.js";
 import emailRoute from "./routes/emailRoute.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
+import path from "path";
+
+const __dirname = path.resolve();
 
 dotenv.config({});
 
@@ -28,6 +31,10 @@ app.use(cors(corsOption));
 app.use("/api/v1/user",userRoute); 
 app.use("/api/v1/email",emailRoute);
  
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+app.get("*", (req,res)=>{
+    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
+})
 
 app.listen(PORT, ()=>{
     connectDB();
