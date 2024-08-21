@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 import toast from "react-hot-toast";
 
 const Signup = () => {
   const [input, setInput] = useState({
-    fullname: '',
-    email: '',
-    password: '',
+    fullname: "",
+    email: "",
+    password: "",
   });
 
   const navigate = useNavigate();
@@ -15,25 +15,28 @@ const Signup = () => {
   const onSubmitHandler = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:8080/api/v1/user/register', input, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      });
-      if(res.data.success)
+      const res = await axios.post(
+        "https://firebase-react-redux-to-mern-gmailclone-2.onrender.com/api/v1/user/register",
+        input,
         {
-            navigate("/login")
-            toast.success(res.data.message);
+          headers: {
+            "Content-Type": "application/json",
+          },
+          withCredentials: true,
         }
+      );
+      if (res.data.success) {
+        navigate("/login");
+        toast.success(res.data.message);
+      }
     } catch (error) {
-        toast.error(error.response.data.message);
+      toast.error(error.response.data.message);
       console.error(error.response.data.message);
     }
     setInput({
-      fullname: '',
-      email: '',
-      password: '',
+      fullname: "",
+      email: "",
+      password: "",
     });
   };
 
@@ -43,7 +46,9 @@ const Signup = () => {
         <h1 className="text-3xl font-bold text-center text-gray-900">Signup</h1>
         <form onSubmit={onSubmitHandler} className="space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700">Full Name</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Full Name
+            </label>
             <input
               value={input.fullname}
               onChange={(e) => setInput({ ...input, fullname: e.target.value })}
@@ -53,7 +58,9 @@ const Signup = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Email
+            </label>
             <input
               value={input.email}
               onChange={(e) => setInput({ ...input, email: e.target.value })}
@@ -63,7 +70,9 @@ const Signup = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700">Password</label>
+            <label className="block text-sm font-medium text-gray-700">
+              Password
+            </label>
             <input
               value={input.password}
               onChange={(e) => setInput({ ...input, password: e.target.value })}
@@ -73,7 +82,10 @@ const Signup = () => {
             />
           </div>
           <p className="text-center text-gray-600">
-            Already have an account? <Link to="/login" className="text-indigo-600 hover:text-indigo-500">Login</Link>
+            Already have an account?{" "}
+            <Link to="/login" className="text-indigo-600 hover:text-indigo-500">
+              Login
+            </Link>
           </p>
           <div>
             <button
